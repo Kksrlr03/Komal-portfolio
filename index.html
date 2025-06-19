@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Komal Sriram | Futuristic Portfolio</title>
+
+  <!-- Google Font for Logo -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+  </style>
+
+  <!-- Main Styles -->
+  <style>
+/* === Global Reset === */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#ffffff;min-height:100vh;position:relative;overflow-x:hidden}
+
+/* === Full‑screen Background Video + Fallback Glow === */
+#bgWrap{position:fixed;inset:0;z-index:-3;overflow:hidden}
+#bgWrap video{width:100%;height:100%;object-fit:cover;filter:brightness(.55);pointer-events:none}
+#bgWrap::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#3a0097 0,#0a002b 80%);mix-blend-mode:screen;opacity:.4}
+
+/* === Header === */
+.header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);box-shadow:0 0 8px rgba(255,255,255,.2);position:relative;z-index:10}
+.logo{font-family:'Pacifico',cursive;font-size:2.4rem;color:#ffffff;text-shadow:0 0 6px #ffffff,0 0 12px rgba(255,255,255,.4)}
+.nav a{margin-left:1rem;color:#eaeaea;text-decoration:none;font-weight:500;transition:.3s}
+.nav a:hover{color:#fff;text-shadow:0 0 4px #fff}
+.btn{margin-left:.8rem;padding:.5rem 1.2rem;border-radius:28px;background:#ffffff;font-weight:600;color:#000;transition:.3s}
+.btn:hover{transform:scale(1.08)}
+.linkedin-btn{background:#ffffff;color:#000}
+
+/* Remove glow & set violet text for header buttons */
+.header .btn,.header .linkedin-btn{box-shadow:none;text-shadow:none;color:#a463f2!important}
+.header .btn:hover,.header .linkedin-btn:hover{color:#843cd8!important;background:#f2f2f2}
+
+/* === Sections === */
+section{padding:4rem 8vw;position:relative;z-index:5}
+h2{font-size:2rem;color:#ffffff;margin-bottom:1.6rem;text-shadow:0 0 6px #ffffff}
+
+/* === Hero === */
+.hero{text-align:center;padding-top:9vh}
+.profile-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #ffffff;box-shadow:0 0 12px #ffffff;animation:pulse 6s infinite ease-in-out}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+
+/* === About === */
+.about-text{max-width:850px;margin:auto;font-size:1.1rem;line-height:1.8}
+
+/* === Projects === */
+.projects-grid{display:grid;gap:2.5rem}
+.project-card{background:rgba(255,255,255,.08);padding:1.7rem;border-radius:18px;box-shadow:0 0 12px rgba(255,255,255,.15);transition:.35s}
+.project-card:hover{transform:translateY(-6px)}
+.project-card.split{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:center}
+.project-card.split video{width:100%;border-radius:12px}
+.tech-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+.tech-grid img{width:60px;height:60px;filter:drop-shadow(0 0 3px #fff);transition:.3s}
+.tech-grid img:hover{transform:scale(1.12)}
+.project-card h3{font-size:1.8rem;margin-bottom:0.6rem;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.4)}
+
+/* === Certificates === */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.7rem;text-align:center}
+.cert-item img{width:100%;height:170px;object-fit:cover;border-radius:14px;cursor:pointer;box-shadow:0 0 10px rgba(255,255,255,.25);transition:.45s}
+.cert-item:hover img{transform:scale(1.06)}
+.cert-caption{margin-top:.6rem;color:#ffffff;font-weight:600;text-shadow:0 0 4px #fff}
+
+/* Modal */
+#certModal{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100}
+#certModal img{max-width:88vw;max-height:72vh;border-radius:10px}
+#certModal .desc{max-width:80vw;color:#ffffff;font-size:1rem;margin-top:1rem;text-align:center;line-height:1.6}
+#closeModal{position:absolute;top:22px;right:32px;font-size:36px;font-weight:bold;color:#fff;cursor:pointer}
+
+/* === Goals === */
+.goals{max-width:760px;margin:auto;font-size:1.1rem;line-height:1.85}
+.goals li{margin-bottom:.6rem}
+
+/* Scroll to Top */
+#scrollToTop{position:fixed;bottom:22px;right:22px;padding:14px;border:none;border-radius:50%;background:#ffffff;color:#000;font-size:20px;box-shadow:0 0 6px #ffffff;display:none;z-index:60;cursor:pointer}
+#scrollToTop:hover{background:#f5f5f5}
+
+/* Footer */
+footer{text-align:center;padding:1rem;background:rgba(0,0,0,.5);color:#ffffff;font-size:.85rem}
+
+/* === Mobile Patch (≤600 px) === */
+@media(max-width:600px){
+  html{font-size:93%;}
+
+  .header{flex-direction:column;align-items:flex-start;padding:0.7rem 1rem;}
+  .logo{font-size:1.8rem;margin-bottom:0.4rem;}
+  .nav{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .nav a,.nav .btn,.nav .linkedin-btn{font-size:0.88rem;padding:0.4rem 0.8rem;}
+
+  .hero{padding-top:6vh;}
+  .profile-img{width:140px;height:140px;}
+  h2{font-size:1.6rem;}
+
+  .projects-grid{gap:1.5rem;}
+  .project-card,.project-card.split{padding:1.1rem;}
+  .project-card.split{grid-template-columns:1fr;}
+  .project-card.split video{margin-bottom:0.8rem;}
+  .project-card h3{font-size:1.4rem;}
+
+  .about-text,.goals{font-size:1rem;}
+  .cert-grid{gap:1rem;}
+  .cert-item img{height:150px;}
+  footer{font-size:0.75rem;}
+
+  #bgWrap video{filter:none;object-position:center top;}
+}
+  </style>
+</head>
+<body>
+
+  <!-- Background Video Wrapper -->
+  <div id="bgWrap">
+    <video id="bgVideo" autoplay muted loop playsinline preload="auto">
+      <source src="assets/bg.mp4"  type="video/mp4">
+      <source src="assets/bg.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Certificate Modal -->
+  <div id="certModal">
+    <span id="closeModal">×</span>
+    <img id="modalImg">
+    <p id="modalDesc" class="desc"></p>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 class="logo">Komal Karri</h1>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#course-certs">Certs</a>
+      <a href="#extra-curricular">Activities</a>
+      <a href="#goals">Goals</a>
+      <a href="assets/resume.pdf" class="btn" target="_blank">Resume</a>
+      <a href="https://www.linkedin.com/in/komal-sriram-lakshman-reddy-karri-6746b828b"
+         class="btn linkedin-btn" target="_blank">LinkedIn</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="assets/profile.jpg" alt="Profile" class="profile-img">
+    <h2>Hey, I'm Karri Komal Sriram Lakshman Reddy 👋</h2>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p class="about-text">
+      I'm a 20-year-old tech enthusiast with a strong interest in AI, automation, and emerging technologies. I have a B.Sc. in Computer Science and enjoy building small tools, exploring generative AI, and experimenting with ideas that can simplify real-world problems.
+    <br><br>
+    Most of my time goes into learning new tech, testing AI models like GPT, and working on side projects related to productivity, automation, or user experience. I like things that are minimal, efficient, and useful.
+    <br><br>
+    Whether it's coding, trying out new APIs, or improving a prototype — I'm always looking to learn and build.
+  </p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+      <!-- ProdLoca -->
+      <div class="project-card split">
+  <video controls src="assets/prodloca.mp4" poster="assets/prodloca_poster.jpg"></video>
+  <div>
+    <h3>ProdLoca</h3>
+    <p>
+      ProdLoca – AI-Powered Local Product Finder
+    </p>
+    <p>
+      ProdLoca is my attempt to bridge the gap between local retailers and nearby customers. The idea came from a simple problem:
+      people often don't know where to find a product nearby, and local shops struggle to show what they have in stock.
+    </p>
+    <p>
+      I designed ProdLoca as a platform where shops can update their product availability in real-time using a simple dashboard.
+      Customers can search for items, view locations on a live Mapbox map, and directly chat or place secure in-app orders — no middlemen.
+    </p>
+    <p>
+      It’s built using <strong>React</strong> for the frontend, <strong>Firebase</strong> for real-time updates, and <strong>Mapbox GL</strong> for location mapping.
+      The goal is to support local businesses while giving users a faster, more reliable way to shop locally.
+    </p>
+  </div>
+</div>
+
+
+      <!-- Quote Terminals -->
+      <div class="project-card">
+  <h3>Quote Terminals – Autonomous X (Twitter) Quote Bot</h3>
+  <p>
+    I built an autonomous system that posts motivational quotes on X (Twitter) every 5 minutes.
+    The idea was simple: quotes are a great source of motivation, so what if AI could generate and share them automatically?
+  </p>
+  <p>
+    I used GPT-4 to generate new quotes and also pulled from sources like Wikipedia and my own SQLite database.
+    Each quote was passed through a sentiment filter using HuggingFace's DistilRoBERTa to ensure it stayed positive and meaningful.
+  </p>
+  <p>
+    Once a quote was generated, it was checked against existing entries in the SQLite database.
+    If it was unique, it would be posted and stored — preventing any repeats in the future.
+  </p>
+  <p>
+    The final flow pushed the accepted quote into a DynamoDB queue, which was picked up by an IFTTT trigger that posted it
+    on my X account called <strong>Quote Terminals</strong>.
+  </p>
+  <p>
+    The project ran successfully for weeks, tweeting fresh AI-generated or curated quotes at regular intervals.
+    I later paused the project as IFTTT’s premium plan (~₹200/month) became unaffordable, but the automation worked flawlessly end-to-end.
+  </p>
+  <div class="tech-grid">
+  <img src="assets/twitter_logo.png"     alt="Twitter">
+  <img src="assets/openai_icon.png"      alt="OpenAI">
+  <img src="assets/huggingface_icon.png" alt="Hugging Face">
+  <img src="assets/ifttt_logo.png"       alt="IFTTT">
+</div>
+</div>
+
+
+    </div>
+  </section>
+
+  <!-- Course Certificates -->
+  <section id="course-certs">
+    <h2>Course Certificates</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <img src="assets/cert_wadhwani.jpg" data-desc="Wadhwani Employability Skills – workplace communication, teamwork, and job readiness." onclick="openCert(this)">
+        <div class="cert-caption">Wadhwani Employability Skills</div>
+      </div>
+      <div class="cert-item">
+        <img src="assets/cert_java.jpg" data-desc="Java Development Bootcamp – Core OOP principles, JavaFX UI, deployment." onclick="openCert(this)">
+        <div class="cert-caption">Java Development Bootcamp</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extra Curricular -->
+  <section id="extra-curricular">
+    <h2>Extra Curricular Activities</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <img src="assets/cert_ieee.jpg" data-desc="IEEE UI/UX Hackathon — 1st place for best design." onclick="openCert(this)">
+        <div class="cert-caption">IEEE UI/UX Hackathon</div>
+      </div>
+      <div class="cert-item">
+        <img src="assets/cert_english.jpg" data-desc="English Eclat — top 5 in creative writing & public speaking." onclick="openCert(this)">
+        <div class="cert-caption">English Eclat Certificate</div>
+      </div>
+      <div class="cert-item">
+        <img src="assets/cert_cs.jpg" data-desc="CS Poster Presentation — AI for Healthcare research." onclick="openCert(this)">
+        <div class="cert-caption">CS Poster Presentation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Goals -->
+  <section id="goals">
+    <h2>Goals</h2>
+    <ul class="goals">
+      <li>⭐ Become an expert in GenAI & automation tools like GPT, LangChain, AutoGPT within 24 months.</li>
+      <li>🧪 Launch at least 2 autonomous AI micro‑tools that run without human touch.</li>
+      <li>💼 Join a cutting‑edge AI startup or build my own SaaS.</li>
+      <li>🤝 Contribute to impactful open‑source AI tools quarterly.</li>
+      <li>🌐 Inspire 1,000+ students to code, build, and believe — no fancy degree needed.</li>
+    </ul>
+  </section>
+
+  <footer>© 2025 Komal Sriram | trench.org.in</footer>
+
+  <button id="scrollToTop" title="Back to top">↑</button>
+
+  <!-- JS -->
+  <script>
+    /* Scroll‑to‑top button */
+    const topBtn = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    /* Certificate modal */
+    function openCert(el) {
+      document.getElementById('modalImg').src = el.src;
+      document.getElementById('modalDesc').textContent = el.dataset.desc;
+      document.getElementById('certModal').style.display = 'flex';
+    }
+    document.getElementById('closeModal').onclick =
+      () => (document.getElementById('certModal').style.display = 'none');
+  </script>
+</body>
+</html>
