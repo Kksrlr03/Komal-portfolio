@@ -3,28 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loading — Komal Sriram</title>
+  <title>Welcome | Komal Sriram</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      height: 100vh;
       overflow: hidden;
-      background: #000;
-    }
-
-    #introWrap {
-      position: fixed;
-      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      z-index: 1;
     }
-
-    #introVideo {
-      position: absolute;
+    #terminal {
+      background: rgba(0,0,0,0.9);
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 20px #00ff00;
+      width: 90%;
+      max-width: 600px;
+      font-size: 1rem;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    video.bg-video {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -32,117 +38,51 @@
       object-fit: cover;
       z-index: -1;
     }
-
-    .terminal {
-      background: rgba(0, 0, 0, 0.75);
-      color: #ffffff;
-      font-family: 'Courier New', monospace;
-      padding: 1.5rem 2rem;
-      max-width: 90vw;
-      width: 600px;
-      min-height: 200px;
-      border: 2px solid #ffffff;
-      box-shadow: 0 0 20px #ffffff;
-      font-size: 1rem;
-      white-space: pre-wrap;
-      overflow: hidden;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 1em;
-      background: #ffffff;
-      margin-left: 5px;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      50.01%, 100% { opacity: 0; }
-    }
-
-    #skipBtn {
-      margin-top: 2rem;
-      background: rgba(0, 0, 0, 0.7);
-      color: #ffffff;
-      border: 1px solid #ffffff;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-size: 1rem;
-      font-family: monospace;
-      transition: background 0.3s;
-    }
-
-    #skipBtn:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    @media (max-width: 600px) {
-      .terminal {
-        width: 95vw;
-        font-size: 0.95rem;
-        padding: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <div id="introWrap">
-    <video id="introVideo" autoplay muted playsinline preload="auto">
-      <source src="assets/matrix_intro.mp4" type="video/mp4">
-    </video>
 
-    <div class="terminal" id="terminal">
-      <span id="typedText"></span><span class="cursor"></span>
-    </div>
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="assets/matrix_intro.mp4" type="video/mp4" />
+</video>
 
-    <button id="skipBtn">Enter Komal's Site</button>
-  </div>
+<div id="terminal"></div>
 
-  <script>
-    const lines = [
-      "> booting trench core system...",
-      "> loading AI development modules...",
-      "> preparing experience crafted by Komal Sriram...",
-      "> you're about to enter something different.",
-      "> welcome, user."
-    ];
+<script>
+  const lines = [
+    "Initializing trench.org.in...",
+    "Verifying GenAI integrity...",
+    "Access granted ✔",
+    "Welcome, Komal Sriram.",
+    "Loading your futuristic portfolio..."
+  ];
 
-    let lineIndex = 0;
-    let charIndex = 0;
-    const typedText = document.getElementById("typedText");
+  let currentLine = 0;
+  const terminal = document.getElementById("terminal");
 
-    function typeLine() {
-      if (lineIndex < lines.length) {
-        if (charIndex < lines[lineIndex].length) {
-          typedText.textContent += lines[lineIndex].charAt(charIndex);
-          charIndex++;
-          setTimeout(typeLine, 40); // typing speed
-        } else {
-          typedText.textContent += "\n";
-          lineIndex++;
-          charIndex = 0;
-          setTimeout(typeLine, 350); // delay between lines
+  function typeLine() {
+    if (currentLine < lines.length) {
+      const line = lines[currentLine];
+      let charIndex = 0;
+      const interval = setInterval(() => {
+        terminal.textContent += line.charAt(charIndex);
+        charIndex++;
+        if (charIndex === line.length) {
+          terminal.textContent += "\n";
+          clearInterval(interval);
+          currentLine++;
+          setTimeout(typeLine, 500);
         }
-      } else {
-        // IMMEDIATE redirect to main.html after prompt finishes
+      }, 40);
+    } else {
+      setTimeout(() => {
         window.location.href = "main.html";
-      }
+      }, 1000);
     }
+  }
 
-    typeLine();
+  typeLine();
+</script>
 
-    // Manual skip button
-    document.getElementById("skipBtn").onclick = () => {
-      window.location.href = "main.html";
-    };
-  </script>
-</body>
-</html>
-
-      window.location.href = "main.html";
-    };
-  </script>
 </body>
 </html>
