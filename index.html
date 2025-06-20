@@ -3,79 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | Komal Sriram</title>
+  <title>Welcome | Komal Sriram</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Courier New', monospace;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:#000;color:#00ff00;
+      font-family:"Courier New",monospace;
+      height:100vh;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;overflow:hidden
     }
-    #terminal {
-      background: rgba(0,0,0,0.9);
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      border: 2px solid #00ff00;
-      box-shadow: 0 0 20px #00ff00;
-      width: 90%;
-      max-width: 600px;
-      font-size: 1rem;
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-    video.bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+    /* video bg */
+    video.bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;filter:brightness(.35)}
+    /* terminal box */
+    #terminal{
+      background:rgba(0,0,0,.9);border:2px solid #00ff00;border-radius:8px;
+      box-shadow:0 0 18px #00ff00;padding:1.5rem 2rem;width:90%;max-width:600px;
+      white-space:pre-wrap;line-height:1.55;font-size:1rem
     }
   </style>
 </head>
 <body>
 
-<video autoplay muted loop playsinline class="bg-video">
-  <source src="assets/matrix_intro.mp4" type="video/mp4" />
+<!-- video with poster -->
+<video autoplay muted loop playsinline preload="none" poster="assets/matrix_intro_poster.png" class="bg">
+  <source src="assets/matrix_intro.mp4" type="video/mp4">
 </video>
 
 <div id="terminal"></div>
 
 <script>
-  const lines = [
-    "Initializing trench.org.in...",
-    "Access granted ✔",
-    "Welcome to Komal Sriram's portfolio."
-  ];
+const lines=[
+  "Initializing trench.org.in...",
+  "Verifying GenAI integrity...",
+  "Access granted ✔",
+  "Welcome to Komal Sriram's portfolio.",
+  "Crafted with code, powered by purpose."
+];
 
-  let i = 0, j = 0;
-  const term = document.getElementById("terminal");
+let li=0, ci=0;
+const term=document.getElementById("terminal");
 
-  function type() {
-    if (i < lines.length) {
-      if (j < lines[i].length) {
-        term.textContent += lines[i][j++];
-        setTimeout(type, 10);          // 10 ms per char
-      } else {
-        term.textContent += "\n";
-        i++; j = 0;
-        setTimeout(type, 80);          // 80 ms gap
-      }
-    } else {
-      window.location.replace("main.html"); // instant jump
+function type(){
+  if(li<lines.length){
+    if(ci<lines[li].length){
+      term.textContent+=lines[li][ci++];
+      setTimeout(type,25);            // 25 ms per char
+    }else{
+      term.textContent+="\n";
+      li++; ci=0;
+      setTimeout(type,300);           // 0.3 s between lines
     }
+  }else{
+    setTimeout(()=>location.href="main.html",700); // brief pause then jump
   }
-
-  type();
+}
+type();
 </script>
-
 
 </body>
 </html>
+
