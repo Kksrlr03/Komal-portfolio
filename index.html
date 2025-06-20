@@ -51,33 +51,29 @@
 <script>
   const lines = [
     "Initializing trench.org.in...",
-    "Verifying GenAI integrity...",
     "Access granted ✔",
-    "Welcome to Komal Sriram's portfolio.",
-    "Crafted with code, powered by purpose."
+    "Welcome to Komal Sriram's portfolio."
   ];
 
-  let lineIndex = 0, charIndex = 0;
-  const terminal = document.getElementById("terminal");
+  let i = 0, j = 0;
+  const term = document.getElementById("terminal");
 
-  function typeLine() {
-    if (lineIndex < lines.length) {
-      if (charIndex < lines[lineIndex].length) {
-        terminal.textContent += lines[lineIndex][charIndex++];
-        setTimeout(typeLine, 25);           // ← 25 ms per character (was 40)
+  function type() {
+    if (i < lines.length) {
+      if (j < lines[i].length) {
+        term.textContent += lines[i][j++];
+        setTimeout(type, 10);          // 10 ms per char
       } else {
-        terminal.textContent += "\n";
-        lineIndex++; charIndex = 0;
-        setTimeout(typeLine, 250);          // ← 250 ms gap between lines (was 500)
+        term.textContent += "\n";
+        i++; j = 0;
+        setTimeout(type, 80);          // 80 ms gap
       }
     } else {
-      setTimeout(() => {
-        window.location.href = "main.html";
-      }, 500);                              // ← 0.5 s final delay (was 1000)
+      window.location.replace("main.html"); // instant jump
     }
   }
 
-  typeLine();
+  type();
 </script>
 
 
