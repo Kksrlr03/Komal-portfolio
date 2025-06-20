@@ -53,36 +53,33 @@
     "Initializing trench.org.in...",
     "Verifying GenAI integrity...",
     "Access granted ✔",
-    "Welcome to Komal Sriram's portfolio.",
+    "Welcome to Komal Sriram's portfolio.",
     "Crafted with code, powered by purpose."
   ];
 
-  let currentLine = 0;
+  let lineIndex = 0, charIndex = 0;
   const terminal = document.getElementById("terminal");
 
   function typeLine() {
-    if (currentLine < lines.length) {
-      const line = lines[currentLine];
-      let charIndex = 0;
-      const interval = setInterval(() => {
-        terminal.textContent += line.charAt(charIndex);
-        charIndex++;
-        if (charIndex === line.length) {
-          terminal.textContent += "\n";
-          clearInterval(interval);
-          currentLine++;
-          setTimeout(typeLine, 500);
-        }
-      }, 40);
+    if (lineIndex < lines.length) {
+      if (charIndex < lines[lineIndex].length) {
+        terminal.textContent += lines[lineIndex][charIndex++];
+        setTimeout(typeLine, 25);           // ← 25 ms per character (was 40)
+      } else {
+        terminal.textContent += "\n";
+        lineIndex++; charIndex = 0;
+        setTimeout(typeLine, 250);          // ← 250 ms gap between lines (was 500)
+      }
     } else {
       setTimeout(() => {
         window.location.href = "main.html";
-      }, 1000);
+      }, 500);                              // ← 0.5 s final delay (was 1000)
     }
   }
 
   typeLine();
 </script>
+
 
 </body>
 </html>
