@@ -7,17 +7,18 @@
 
   <!-- favicon & social preview -->
   <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
-  <meta property="og:title" content="Komal Sriram | Futuristic Portfolio">
+  <meta property="og:title"       content="Komal Sriram | Futuristic Portfolio">
   <meta property="og:description" content="AI‑driven developer building automation tools and GenAI projects.">
-  <meta property="og:image" content="assets/profile.jpg">
-  <meta property="og:url" content="https://www.trench.org.in/">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image"       content="assets/profile.jpg">
+  <meta property="og:url"         content="https://www.trench.org.in/">
+  <meta name="twitter:card"       content="summary_large_image">
 
   <!-- logo font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
 
+  <!-- =====  CSS  ===== -->
   <style>
-/* ==== Global reset & base ==== */
+/* ==== Reset & base ==== */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -25,7 +26,7 @@ body{
   color:#fff;background:#000;min-height:100vh;overflow-x:hidden;position:relative;
 }
 
-/* ==== Background video ==== */
+/* ==== Background ==== */
 #bgWrap{position:fixed;inset:0;z-index:-3}
 #bgWrap video{width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
 #bgWrap::after{
@@ -37,16 +38,16 @@ body{
 /* ==== Header ==== */
 .header{
   width:100vw;display:flex;justify-content:space-between;align-items:center;
-  padding:1.2rem 1.6rem;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);
-  box-shadow:0 0 8px rgba(255,255,255,.25);z-index:10;
+  padding:1.2rem 1.6rem;background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);box-shadow:0 0 8px rgba(255,255,255,.25);z-index:10
 }
 .logo{
   font-family:'Pacifico',cursive;font-size:clamp(1.8rem,6vw,2.6rem);
-  white-space:nowrap;text-shadow:0 0 10px #fff;
+  white-space:nowrap;text-shadow:0 0 10px #fff
 }
 .nav{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
 .nav a{
-  color:#dedcff;text-decoration:none;font-weight:500;font-size:1.05rem;transition:.25s;
+  color:#dedcff;text-decoration:none;font-weight:500;font-size:1.05rem;transition:.25s
 }
 .nav a:hover{color:#fff;text-shadow:0 0 4px #fff}
 .btn{
@@ -66,7 +67,10 @@ h2{font-size:clamp(1.4rem,4vw+0.4rem,2rem);margin-bottom:1.6rem;text-shadow:0 0 
   border:4px solid #fff;box-shadow:0 0 12px #fff;animation:pulse 6s infinite ease-in-out
 }
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-.hero h2{font-size:clamp(1.5rem,5vw+1rem,2.4rem);margin-top:1.1rem;text-shadow:0 0 8px #fff;line-height:1.25}
+.hero h2{
+  font-size:clamp(1.5rem,5vw+1rem,2.4rem);
+  margin-top:1.1rem;text-shadow:0 0 8px #fff;line-height:1.25
+}
 
 /* ==== Text blocks ==== */
 .about-text,.goals{max-width:850px;margin:auto;font-size:1.05rem;line-height:1.8}
@@ -80,7 +84,10 @@ h2{font-size:clamp(1.4rem,4vw+0.4rem,2rem);margin-bottom:1.6rem;text-shadow:0 0 
 .project-card:hover{transform:translateY(-6px)}
 .project-card.split{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:center}
 .project-card.split video{width:100%;border-radius:12px}
-.project-card h3{font-size:clamp(1.3rem,1.2vw+1rem,1.85rem);margin-bottom:.6rem;text-shadow:0 0 6px rgba(255,255,255,.4)}
+.project-card h3{
+  font-size:clamp(1.3rem,1.2vw+1rem,1.85rem);
+  margin-bottom:.6rem;text-shadow:0 0 6px rgba(255,255,255,.4)
+}
 .tech-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
 .tech-grid img{width:56px;height:56px;filter:drop-shadow(0 0 3px #fff);transition:.25s}
 .tech-grid img:hover{transform:scale(1.1)}
@@ -132,7 +139,7 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
 
 <body>
 
-<!-- Background with JPG poster -->
+<!-- Background video -->
 <div id="bgWrap">
   <video autoplay muted loop playsinline preload="none" poster="assets/bg_poster.jpg">
     <source src="assets/bg.mp4" type="video/mp4">
@@ -140,7 +147,7 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
   </video>
 </div>
 
-<!-- Modal -->
+<!-- Certificate Modal -->
 <div id="certModal"><span id="closeModal">×</span><img id="modalImg"><p id="modalDesc" class="desc"></p></div>
 
 <!-- Header -->
@@ -173,7 +180,7 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
   </p>
 </section>
 
-<!-- Projects -->
+<!-- Projects (UPDATED ORDER & DESCRIPTIONS) -->
 <section id="projects">
   <h2>Projects</h2>
   <div class="projects-grid">
@@ -184,15 +191,14 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
       <div>
         <h3>ProdLoca – Find Local Products Nearby</h3>
         <p>
-          ProdLoca was my idea to help people find products in nearby local shops instead of depending 
-          only on online stores. I created a basic app where shopkeepers can update what they have, 
-          and users can search nearby.
+          ProdLoca was my idea to help people find products in nearby local shops instead of relying 
+          only on big online stores. Shopkeepers can update what they have; users can search, see 
+          the products on a live Mapbox map, chat, and place simple orders.
         </p>
         <p>
-          I added a live map and simple chat/order features. The goal was to solve a real-life problem 
-          and make things easier for both customers and small shops.
+          It aims to solve a real-life problem and make shopping easier for both customers and small shops.
         </p>
-        <p><strong>Tech used:</strong> React, Firebase (Realtime DB), Mapbox</p>
+        <p><strong>Tech used:</strong> React, Firebase Realtime DB, Mapbox</p>
       </div>
     </div>
 
@@ -200,13 +206,12 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
     <div class="project-card">
       <h3>Quote Terminals – AI Twitter Quote Bot</h3>
       <p>
-        I built an automated system that posts motivational quotes to my X (Twitter) account 
-        without manual work. It uses ChatGPT to write quotes, checks that the tone is positive, 
-        and avoids repeating the same quote.
+        An automated system that posts motivational quotes to my X (Twitter) account 
+        without manual effort. ChatGPT writes the quotes, a tone check keeps them positive, 
+        and the bot avoids repeats.
       </p>
       <p>
-        The bot posted every 5 minutes for weeks until I paused it. I used this project to learn 
-        how to automate things using AI and simple online tools.
+        It posted every five minutes for weeks until I paused it and taught me a lot about automation.
       </p>
       <p><strong>Tech used:</strong> ChatGPT, Hugging Face, SQLite, IFTTT</p>
       <div class="tech-grid">
@@ -220,33 +225,34 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
   </div>
 </section>
 
-
 <!-- Course Certificates -->
 <section id="course-certs">
   <h2>Course Certificates</h2>
   <div class="cert-grid">
 
+    <!-- Wadhwani -->
     <div class="cert-item">
-      <img src="assets/cert_wadhwani.jpg" data-desc="Wadhwani Employability Skills – workplace communication, teamwork, and job readiness." onclick="openCert(this)">
+      <img src="assets/cert_wadhwani.jpg" data-desc="Wadhwani Employability Skills" onclick="openCert(this)">
       <div class="cert-caption">Wadhwani Employability Skills</div>
       <p class="cert-brief">
         • Learned clear & confident communication<br>
-        • Practiced teamwork and basic leadership<br>
-        • Mock interviews and résumé building<br>
-        • Customer‑centric thinking exercises<br>
-        • Certified “Job Ready” by Wadhwani Foundation
+        • Practiced teamwork and coordination<br>
+        • Understood job‑interview basics<br>
+        • Sharpened workplace attitude<br>
+        • Certified “Job Ready”
       </p>
     </div>
 
+    <!-- Java/Python -->
     <div class="cert-item">
-      <img src="assets/cert_java.jpg" data-desc="Java Development Bootcamp – Core OOP principles, JavaFX UI, deployment." onclick="openCert(this)">
-      <div class="cert-caption">Java Development Bootcamp</div>
+      <img src="assets/cert_java.jpg" data-desc="Java & Python basics" onclick="openCert(this)">
+      <div class="cert-caption">Java & Python Basics</div>
       <p class="cert-brief">
-        • Learned Python & Java basics in VS Code<br>
-        • Built simple programs using loops & logic<br>
-        • Practiced small GUI projects<br>
-        • Understood OOP fundamentals<br>
-        • Confident in writing beginner‑level code
+        • Learned Python and Java fundamentals<br>
+        • Wrote programs in VS Code<br>
+        • Practiced logic and loops<br>
+        • Understood OOP basics<br>
+        • Gained beginner‑level coding confidence
       </p>
     </div>
   </div>
@@ -257,39 +263,41 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
   <h2>Extra‑Curricular Activities</h2>
   <div class="cert-grid">
 
+    <!-- IEEE Hackathon -->
     <div class="cert-item">
-      <img src="assets/cert_ieee.jpg" data-desc="IEEE UI/UX Hackathon — Led a 24‑hour sprint and won 1st place for best design." onclick="openCert(this)">
+      <img src="assets/cert_ieee.jpg" data-desc="IEEE UI/UX Hackathon" onclick="openCert(this)">
       <div class="cert-caption">IEEE UI/UX Hackathon</div>
       <p class="cert-brief">
-        • Led a 5‑member team in a 24‑hour hack<br>
-        • Designed a health tracking app in Figma<br>
-        • Focused on clean layout & UX flow<br>
-        • Built interactive prototype<br>
-        • Won 1st place for user‑friendly design
+        • Led a team in a 24‑hour UI/UX challenge<br>
+        • Designed a health‑tracking app<br>
+        • Built an interactive prototype<br>
+        • Focused on clean layout & flow<br>
       </p>
     </div>
 
+    <!-- English Eclat -->
     <div class="cert-item">
-      <img src="assets/cert_english.jpg" data-desc="English Eclat — Topic: What Does Success Demand?" onclick="openCert(this)">
+      <img src="assets/cert_english.jpg" data-desc="English Eclat – Speech on Success" onclick="openCert(this)">
       <div class="cert-caption">English Eclat Certificate</div>
       <p class="cert-brief">
         • Speech on “What Does Success Demand?”<br>
-        • Shared stories of Musk & Mandela<br>
-        • Ranked top 5 of 60+ participants<br>
-        • Improved stage presence & clarity<br>
-        • Honed persuasive speaking skills
+        • Used Mandela & Musk as examples<br>
+        • Ranked top 2 of 60+ participants<br>
+        • Improved stage confidence<br>
+        • Practiced persuasive speaking
       </p>
     </div>
 
+    <!-- CS Poster -->
     <div class="cert-item">
-      <img src="assets/cert_cs.jpg" data-desc="CS Poster Presentation — Blockchain & Crypto Technology." onclick="openCert(this)">
+      <img src="assets/cert_cs.jpg" data-desc="Blockchain & Crypto poster" onclick="openCert(this)">
       <div class="cert-caption">CS Poster: Blockchain & Crypto</div>
       <p class="cert-brief">
         • Explained decentralization & smart contracts<br>
-        • Designed infographic poster (Adobe XD)<br>
-        • Discussed real‑world crypto use cases<br>
-        • Presented to faculty & peers<br>
-        • Awarded for clear tech explanation
+        • Designed a clear infographic poster<br>
+        • Discussed real‑world crypto uses<br>
+        • Presented to staff and peers<br>
+        • Noted for simple explanations
       </p>
     </div>
   </div>
@@ -311,7 +319,7 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
 <button id="scrollToTop" title="Back to top">↑</button>
 
 <script>
-/* scroll‑top button */
+/* scroll‑top */
 const topBtn=document.getElementById('scrollToTop');
 window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none'});
 topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
