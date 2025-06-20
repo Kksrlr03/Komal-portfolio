@@ -118,9 +118,30 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
 /* === Mobile (≤600 px) === */
 @media(max-width:600px){
   section{padding:3.5rem 6vw}
-  .header{flex-direction:column;align-items:flex-start}
-  .nav a{font-size:.85rem}
-  .btn{font-size:.78rem;padding:.4rem .9rem}
+
+  /* Header Tweaks */
+  .header{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:1rem;
+  }
+  .logo{
+    font-size:2rem; /* ↑ was 1.6rem */
+    margin-bottom:0.6rem;
+  }
+  .nav{
+    flex-wrap:wrap;
+    gap:0.6rem;
+  }
+  .nav a{
+    font-size:1rem; /* ↑ was 0.85rem */
+    padding:0.4rem 0.6rem;
+  }
+  .btn{
+    font-size:0.95rem; /* ↑ was 0.78rem */
+    padding:0.55rem 1.1rem;
+  }
+
   .profile-img{width:140px;height:140px}
   .projects-grid{gap:1.5rem}
   .project-card,.project-card.split{padding:1.15rem}
@@ -278,12 +299,6 @@ footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;fo
     }
     document.getElementById('closeModal').onclick=
       ()=>document.getElementById('certModal').style.display='none';
-  </script>
-</body>
-</html>
-
-    document.getElementById('closeModal').onclick =
-      () => (document.getElementById('certModal').style.display = 'none');
   </script>
 </body>
 </html>
