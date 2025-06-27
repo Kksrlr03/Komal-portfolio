@@ -3,129 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Komal Sriram | Futuristic Portfolio</title>
+  <title>Komal Sriram | Futuristic Portfolio</title>
 
-  <!-- favicon & social preview -->
   <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
-  <meta property="og:title"       content="Komal Sriram | Futuristic Portfolio">
+  <meta property="og:title" content="Komal Sriram | Futuristic Portfolio">
   <meta property="og:description" content="AI‑driven developer building automation tools and GenAI projects.">
-  <meta property="og:image"       content="assets/profile.jpg">
-  <meta property="og:url"         content="https://www.trench.org.in/">
-  <meta name="twitter:card"       content="summary_large_image">
-
-  <!-- logo font -->
+  <meta property="og:image" content="assets/profile.jpg">
+  <meta property="og:url" content="https://www.trench.org.in/">
+  <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
 
   <style>
-  /* ==== Reset & base ==== */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    color:#fff;background:#000;min-height:100vh;overflow-x:hidden;position:relative;
-  }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+      color:#fff;background:#000;min-height:100vh;overflow-x:hidden;position:relative;
+    }
 
-  /* ==== Background (Matrix-style Canvas) ==== */
-  #bgWrap {
-    position: fixed;
-    inset: 0;
-    z-index: -3;
-    background: #000;
-  }
-  #matrixCanvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
-    opacity: 0.12;
-    filter: blur(1px);
-  }
-
-  /* ==== Header ==== */
-  .header{width:100vw;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.6rem;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);box-shadow:0 0 8px rgba(255,255,255,.25);z-index:10}
-  .logo{font-family:'Pacifico',cursive;font-size:clamp(1.8rem,6vw,2.6rem);white-space:nowrap;text-shadow:0 0 10px #fff}
-  .nav{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
-  .nav a{color:#dedcff;text-decoration:none;font-weight:500;font-size:1.05rem;transition:.25s}
-  .nav a:hover{color:#fff;text-shadow:0 0 4px #fff}
-  .btn{padding:.55rem 1.25rem;border:none;border-radius:28px;background:#39206c;color:#f6f3ff;font-size:1.02rem;font-weight:600;transition:.25s}
-  .btn:hover{background:#513498;color:#fff}
-
-  /* ==== Sections ==== */
-  section{padding:4rem min(8vw,90px);max-width:1600px;margin:auto}
-  h2{font-size:clamp(1.4rem,4vw+0.4rem,2rem);margin-bottom:1.6rem;text-shadow:0 0 6px #fff}
-
-  /* ==== Hero ==== */
-  .hero{text-align:center;padding-top:9vh}
-  .profile-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 12px #fff;animation:pulse 6s infinite ease-in-out}
-  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-  .hero h2{font-size:clamp(1.5rem,5vw+1rem,2.4rem);margin-top:1.1rem;text-shadow:0 0 8px #fff;line-height:1.25}
-
-  /* ==== Text blocks ==== */
-  .about-text,.goals{max-width:850px;margin:auto;font-size:1.05rem;line-height:1.8}
-
-  /* ==== Projects ==== */
-  .projects-grid{display:grid;gap:2.5rem}
-  .project-card{background:rgba(255,255,255,.08);padding:1.7rem;border-radius:18px;box-shadow:0 0 12px rgba(255,255,255,.15);transition:.3s}
-  .project-card:hover{transform:translateY(-6px)}
-  .project-card.split{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:center}
-  .project-card.split video{width:100%;border-radius:12px}
-  .project-card h3{font-size:clamp(1.3rem,1.2vw+1rem,1.85rem);margin-bottom:.6rem;text-shadow:0 0 6px rgba(255,255,255,.4)}
-  .tech-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
-  .tech-grid img{width:56px;height:56px;filter:drop-shadow(0 0 3px #fff);transition:.25s}
-  .tech-grid img:hover{transform:scale(1.1)}
-
-  /* ==== Certificates & Activities ==== */
-  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.7rem;text-align:center}
-  .cert-item img{width:100%;height:170px;object-fit:cover;border-radius:14px;cursor:pointer;box-shadow:0 0 10px rgba(255,255,255,.25);transition:.4s}
-  .cert-item:hover img{transform:scale(1.05)}
-  .cert-caption{margin-top:.6rem;font-weight:600;text-shadow:0 0 3px #fff}
-  .cert-brief{margin-top:.35rem;font-size:.9rem;line-height:1.45;color:#d0d0ff}
-
-  /* ==== Modal ==== */
-  #certModal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100}
-  #certModal img{max-width:88vw;max-height:72vh;border-radius:10px}
-  #closeModal{position:absolute;top:22px;right:32px;font-size:36px;font-weight:bold;color:#fff;cursor:pointer}
-  #certModal .desc{max-width:80vw;margin-top:1rem;text-align:center;line-height:1.6}
-
-  /* ==== Scroll‑top ==== */
-  #scrollToTop{position:fixed;bottom:22px;right:22px;padding:14px;border:none;border-radius:50%;font-size:22px;background:#fff;color:#000;box-shadow:0 0 6px #fff;cursor:pointer;display:none;z-index:60}
-  #scrollToTop:hover{background:#eaeaea}
-
-  /* ==== Footer ==== */
-  footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;font-size:.85rem}
-
-  /* ==== Mobile (≤600 px) ==== */
-  @media(max-width:600px){
-    section{padding:3.5rem 6vw}
-    .header{flex-direction:column;align-items:flex-start;padding:1.3rem 1rem}
-    .logo{font-size:2.4rem;margin-bottom:.7rem}
-    .nav a{font-size:1.15rem}
-    .btn{font-size:1.1rem;padding:.6rem 1.3rem}
-    .profile-img{width:150px;height:150px}
-    .project-card,.project-card.split{padding:1.15rem}
-    .project-card.split{grid-template-columns:1fr}
-    .project-card.split video{margin-bottom:.8rem}
-    .project-card h3{font-size:1.45rem}
-    .about-text,.goals{font-size:1rem}
-    .cert-item img{height:150px}
-    footer{font-size:.75rem}
-  }
+    /* Starfield animated background */
+    #bgCanvas { position:fixed; inset:0; z-index:-3; }
+    
+    /* Existing CSS below (unchanged): */
+    .header{width:100vw;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.6rem;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);box-shadow:0 0 8px rgba(255,255,255,.25);z-index:10}
+    .logo{font-family:'Pacifico',cursive;font-size:clamp(1.8rem,6vw,2.6rem);white-space:nowrap;text-shadow:0 0 10px #fff}
+    .nav{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+    .nav a{color:#dedcff;text-decoration:none;font-weight:500;font-size:1.05rem;transition:.25s}
+    .nav a:hover{color:#fff;text-shadow:0 0 4px #fff}
+    .btn{padding:.55rem 1.25rem;border:none;border-radius:28px;background:#39206c;color:#f6f3ff;font-size:1.02rem;font-weight:600;transition:.25s}
+    .btn:hover{background:#513498;color:#fff}
+    section{padding:4rem min(8vw,90px);max-width:1600px;margin:auto}
+    h2{font-size:clamp(1.4rem,4vw+0.4rem,2rem);margin-bottom:1.6rem;text-shadow:0 0 6px #fff}
+    .hero{text-align:center;padding-top:9vh}
+    .profile-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 12px #fff;animation:pulse 6s infinite ease-in-out}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+    .hero h2{font-size:clamp(1.5rem,5vw+1rem,2.4rem);margin-top:1.1rem;text-shadow:0 0 8px #fff;line-height:1.25}
+    .about-text,.goals{max-width:850px;margin:auto;font-size:1.05rem;line-height:1.8}
+    .projects-grid{display:grid;gap:2.5rem}
+    .project-card{background:rgba(255,255,255,.08);padding:1.7rem;border-radius:18px;box-shadow:0 0 12px rgba(255,255,255,.15);transition:.3s}
+    .project-card:hover{transform:translateY(-6px)}
+    .project-card.split{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:center}
+    .project-card.split video{width:100%;border-radius:12px}
+    .project-card h3{font-size:clamp(1.3rem,1.2vw+1rem,1.85rem);margin-bottom:.6rem;text-shadow:0 0 6px rgba(255,255,255,.4)}
+    .tech-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+    .tech-grid img{width:56px;height:56px;filter:drop-shadow(0 0 3px #fff);transition:.25s}
+    .tech-grid img:hover{transform:scale(1.1)}
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.7rem;text-align:center}
+    .cert-item img{width:100%;height:170px;object-fit:cover;border-radius:14px;cursor:pointer;box-shadow:0 0 10px rgba(255,255,255,.25);transition:.4s}
+    .cert-item:hover img{transform:scale(1.05)}
+    .cert-caption{margin-top:.6rem;font-weight:600;text-shadow:0 0 3px #fff}
+    .cert-brief{margin-top:.35rem;font-size:.9rem;line-height:1.45;color:#d0d0ff}
+    #certModal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100}
+    #certModal img{max-width:88vw;max-height:72vh;border-radius:10px}
+    #closeModal{position:absolute;top:22px;right:32px;font-size:36px;font-weight:bold;color:#fff;cursor:pointer}
+    #certModal .desc{max-width:80vw;margin-top:1rem;text-align:center;line-height:1.6}
+    #scrollToTop{position:fixed;bottom:22px;right:22px;padding:14px;border:none;border-radius:50%;font-size:22px;background:#fff;color:#000;box-shadow:0 0 6px #fff;cursor:pointer;display:none;z-index:60}
+    #scrollToTop:hover{background:#eaeaea}
+    footer{text-align:center;padding:1rem;background:rgba(0,0,0,.6);color:#e0e0ff;font-size:.85rem}
+    @media(max-width:600px){
+      section{padding:3.5rem 6vw}
+      .header{flex-direction:column;align-items:flex-start;padding:1.3rem 1rem}
+      .logo{font-size:2.4rem;margin-bottom:.7rem}
+      .nav a{font-size:1.15rem}
+      .btn{font-size:1.1rem;padding:.6rem 1.3rem}
+      .profile-img{width:150px;height:150px}
+      .project-card,.project-card.split{padding:1.15rem}
+      .project-card.split{grid-template-columns:1fr}
+      .project-card.split video{margin-bottom:.8rem}
+      .project-card h3{font-size:1.45rem}
+      .about-text,.goals{font-size:1rem}
+      .cert-item img{height:150px}
+      footer{font-size:.75rem}
+    }
   </style>
 </head>
 
 <body>
 
-<!-- Background -->
-<div id="bgWrap">
-  <canvas id="matrixCanvas"></canvas>
-</div>
+<canvas id="bgCanvas"></canvas>
 
-<!-- Certificate Modal -->
 <div id="certModal"><span id="closeModal">×</span><img id="modalImg"><p id="modalDesc" class="desc"></p></div>
 
-<!-- Header -->
 <header class="header">
-  <h1 class="logo">Komal Karri</h1>
+  <h1 class="logo">Komal Karri</h1>
   <nav class="nav">
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
@@ -137,68 +97,75 @@
   </nav>
 </header>
 
-<!-- Hero -->
 <section class="hero">
   <img src="assets/profile.jpg" alt="Profile" class="profile-img">
-  <h2>Hey, I'm Karri Komal Sriram Lakshman Reddy 👋</h2>
+  <h2>Hey, I'm Karri Komal Sriram Lakshman Reddy 👋</h2>
 </section>
 
-<!-- About -->
 <section id="about">
-  <h2>About Me</h2>
-  <p class="about-text">
-    I'm a 20‑year‑old tech enthusiast with a strong interest in AI, automation, and emerging technologies...
-  </p>
+  <h2>About Me</h2>
+  <p class="about-text">…your about text…</p>
 </section>
 
-<!-- (All other sections stay same as your original: Projects, Certificates, Activities, Goals, Footer...) -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <!-- ProdLoca and Quote Terminals sections unchanged -->
+  </div>
+</section>
 
-<!-- Scroll Top -->
+<section id="course-certs">…certificate sections…</section>
+<section id="extra-curricular">…activities…</section>
+<section id="goals">…goals…</section>
+
+<footer>© 2025 Komal Sriram | trench.org.in</footer>
 <button id="scrollToTop" title="Back to top">↑</button>
 
-<!-- Scripts -->
 <script>
-/* Matrix Background */
-const canvas = document.getElementById('matrixCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let cols = canvas.width / 20;
-let ypos = Array(Math.floor(cols)).fill(0);
+  // Starfield animation
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, stars = [];
+  function initStars(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    stars = Array.from({length:200}, () => ({ x:Math.random()*w, y:Math.random()*h, z:Math.random()*w }));
+  }
+  function animateStars(){
+    ctx.clearRect(0,0,w,h);
+    stars.forEach(s=>{
+      s.z -= 2;
+      if(s.z<=0) s.z = w;
+      const k = 128/s.z;
+      const x = s.x*k + w/2;
+      const y = s.y*k + h/2;
+      if(x>=0 && x<=w && y>=0 && y<=h){
+        const size = (1 - s.z/w)*3;
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(x,y,size,0,Math.PI*2);
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(animateStars);
+  }
+  window.addEventListener('resize', initStars);
+  initStars();
+  animateStars();
 
-function matrixEffect() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#0f0';
-  ctx.font = '15pt monospace';
-
-  ypos.forEach((y, i) => {
-    const text = String.fromCharCode(0x30A0 + Math.random() * 96);
-    const x = i * 20;
-    ctx.fillText(text, x, y);
-    ypos[i] = y > canvas.height + Math.random() * 10000 ? 0 : y + 20;
-  });
-}
-setInterval(matrixEffect, 50);
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  cols = canvas.width / 20;
-  ypos = Array(Math.floor(cols)).fill(0);
-});
-
-/* scroll‑top */
-const topBtn=document.getElementById('scrollToTop');
-window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none'});
-topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-
-/* certificate modal */
-function openCert(el){
-  document.getElementById('modalImg').src=el.src;
-  document.getElementById('modalDesc').textContent=el.dataset.desc;
-  document.getElementById('certModal').style.display='flex';
-}
-document.getElementById('closeModal').onclick=()=>document.getElementById('certModal').style.display='none';
+  // Modal & scroll script unchanged
+  const topBtn = document.getElementById('scrollToTop');
+  window.addEventListener('scroll', ()=> topBtn.style.display = window.scrollY>300 ? 'block':'none');
+  topBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
+  function openCert(el){
+    document.getElementById('modalImg').src=el.src;
+    document.getElementById('modalDesc').textContent=el.dataset.desc;
+    document.getElementById('certModal').style.display='flex';
+  }
+  document.getElementById('closeModal').onclick = ()=> {
+    document.getElementById('certModal').style.display = 'none';
+  };
 </script>
+
 </body>
 </html>
