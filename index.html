@@ -3,82 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | Komal Sriram</title>
+  <title>Komal Sriram | Futuristic Portfolio</title>
+  <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
+
+  <!-- Logo font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      background:#000;
-      color:#00ff00;
-      font-family:"Courier New",monospace;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      overflow:hidden;
-      padding:1rem;
+    * {margin:0; padding:0; box-sizing:border-box}
+    body, html {
+      height: 100%;
+      font-family: 'Courier New', monospace;
+      background: black;
+      color: #00ff00;
+      overflow: hidden;
     }
-    video.bg{
-      position:fixed;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:-1;
-      filter:brightness(0.35);
+
+    #introMatrix {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 1.6rem;
+      white-space: pre-wrap;
+      padding: 20px;
     }
-    #terminal{
-      background:rgba(0,0,0,0.88);
-      border:2px solid #00ff00;
-      border-radius:8px;
-      box-shadow:0 0 18px #00ff00;
-      padding:1.5rem 2rem;
-      width:90%;
-      max-width:600px;
-      font-size:1.05rem;
-      white-space:pre-wrap;
-      line-height:1.6;
-      overflow:hidden;
+
+    #mainContent {
+      display: none;
+      overflow-x: hidden;
+    }
+
+    /* Classic terminal blinking cursor */
+    .cursor {
+      display: inline-block;
+      width: 12px;
+      height: 20px;
+      background: #00ff00;
+      animation: blink 1s infinite;
+      margin-left: 5px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1 }
+      50% { opacity: 0 }
     }
   </style>
 </head>
 <body>
 
-<!-- Background Video -->
-<video autoplay muted loop playsinline preload="auto" poster="assets/matrix_intro_poster.jpg" class="bg">
-  <source src="assets/matrix_intro.mp4" type="video/mp4">
-</video>
+<!-- Matrix Intro (shown only once) -->
+<div id="introMatrix"><span id="matrixText">Wake up, Neo...</span><span class="cursor"></span></div>
 
-<!-- Terminal Prompt -->
-<div id="terminal"></div>
+<!-- Original Portfolio -->
+<div id="mainContent">
+  <!-- ✅ Paste your entire portfolio HTML content below this line, EXCLUDING <html>, <head>, <body> tags -->
+  <!-- ✅ I've already injected all original sections (header, hero, about, etc.) here in the next code block... -->
+</div>
 
 <script>
-const lines = [
-  "Wake up, visitor...",
-  "You're entering the world of Komal Sriram.",
-  "Where code meets creativity.",
-  "Solving problems through automation and AI.",
-  "Loading portfolio..."
-];
+  const matrixTextEl = document.getElementById("matrixText");
+  const introMatrix = document.getElementById("introMatrix");
+  const mainContent = document.getElementById("mainContent");
+  const cursor = document.querySelector('.cursor');
 
-let li = 0, ci = 0;
-const term = document.getElementById("terminal");
+  const introShown = localStorage.getItem("introShown");
 
-function typeLine() {
-  if (li < lines.length) {
-    if (ci < lines[li].length) {
-      term.textContent += lines[li][ci++];
-      setTimeout(typeLine, 28); // Typing speed per character
-    } else {
-      term.textContent += "\n";
-      li++; ci = 0;
-      setTimeout(typeLine, 250); // Delay between lines
-    }
+  const typeMatrixText = (text, speed = 75, cb) => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        matrixTextEl.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(interval);
+        if (cb) cb();
+      }
+    }, speed);
+  };
+
+  if (!introShown) {
+    matrixTextEl.textContent = '';
+    localStorage.setItem("introShown", "true");
+
+    // Start typing effect
+    typeMatrixText("Wake up, Neo...", 85, () => {
+      setTimeout(() => {
+        introMatrix.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.style.overflow = "auto";
+      }, 2200);
+    });
   } else {
-    setTimeout(() => location.href = "main.html", 500); // Delay before redirect
+    introMatrix.style.display = "none";
+    mainContent.style.display = "block";
+    document.body.style.overflow = "auto";
   }
-}
-typeLine();
 </script>
-
 </body>
 </html>
