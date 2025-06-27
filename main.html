@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Komal Sriram | Futuristic Portfolio</title>
-  
+
   <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
   <meta property="og:title" content="Komal Sriram | Futuristic Portfolio">
   <meta property="og:description" content="AI‑driven developer building automation tools and GenAI projects.">
@@ -18,11 +18,15 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#fff;background:#000;min-height:100vh;overflow-x:hidden;position:relative;}
-    
-    /* Matrix background */
-    #matrixCanvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;background:black;}
 
-    /* Header, sections, styles—all unchanged */
+    #matrixCanvas {
+      position:fixed;
+      top:0; left:0;
+      width:100vw; height:100vh;
+      z-index:-1;
+      background:black;
+    }
+
     .header{width:100vw;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.6rem;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);box-shadow:0 0 8px rgba(255,255,255,.25);z-index:10}
     .logo{font-family:'Pacifico',cursive;font-size:clamp(1.8rem,6vw,2.6rem);white-space:nowrap;text-shadow:0 0 10px #fff}
     .nav{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
@@ -87,14 +91,12 @@
 <body>
   <canvas id="matrixCanvas"></canvas>
 
-  <!-- Certificate Modal -->
   <div id="certModal">
     <span id="closeModal">×</span>
     <img id="modalImg">
     <p id="modalDesc" class="desc"></p>
   </div>
 
-  <!-- Header -->
   <header class="header">
     <h1 class="logo">Komal Karri</h1>
     <nav class="nav">
@@ -104,37 +106,142 @@
       <a href="#extra-curricular">Activities</a>
       <a href="#goals">Goals</a>
       <a href="assets/resume.pdf" class="btn" target="_blank">Resume</a>
-      <a href="https://www.linkedin.com/in/komal-sriram-lakshman-reddy-karri-6746b828b"
-         class="btn" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/komal-sriram-lakshman-reddy-karri-6746b828b" class="btn" target="_blank">LinkedIn</a>
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <img src="assets/profile.jpg" alt="Profile" class="profile-img">
     <h2>Hey, I'm Karri Komal Sriram Lakshman Reddy 👋</h2>
   </section>
 
-  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
     <p class="about-text">
-      I'm a 20‑year‑old tech enthusiast with a strong interest in AI, automation, and emerging technologies…
-      <!-- full content as before -->
+      I'm a 20‑year‑old tech enthusiast with a strong interest in AI, automation, and emerging technologies. I have a B.Sc. in Computer Science and enjoy building small tools, exploring generative AI, and experimenting with ideas that can simplify real‑world problems.<br><br>
+      Most of my time goes into learning new tech, testing AI models like GPT, and working on side projects related to productivity, automation, or user experience. I like things that are minimal, efficient, and useful.<br><br>
+      Whether it's coding, trying out new APIs, or improving a prototype — I'm always looking to learn and build.
     </p>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">… your full projects content …</section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
 
-  <!-- Certificates -->
-  <section id="course-certs">… your full certificates content …</section>
+      <div class="project-card split">
+        <video controls src="assets/prodloca.mp4" poster="assets/prodloca_poster.jpg"></video>
+        <div>
+          <h3>ProdLoca – Find Local Products Nearby</h3>
+          <p>
+            ProdLoca helps people discover products in nearby neighbourhood shops instead of relying only on big e‑commerce websites. Shop owners can update stock from a simple dashboard, while customers search, view each item on a live Mapbox map, and message the shop or place an order — all inside the app.
+          </p>
+          <p>
+            My goal was to solve a real everyday problem: many local stores have what we need, but we don’t know it. ProdLoca brings their shelves to a phone screen and keeps the money in the community.
+          </p>
+          <p><strong>Tech used:</strong> React, Firebase Realtime DB, Mapbox GL</p>
+        </div>
+      </div>
 
-  <!-- Extra‑Curricular -->
-  <section id="extra-curricular">… your full extra‑curricular content …</section>
+      <div class="project-card">
+        <h3>Quote Terminals – AI Twitter Quote Bot</h3>
+        <p>
+          Quote Terminals is a fully automated system that shares new motivational quotes on my X (Twitter) account every five minutes — without human input. ChatGPT creates the quotes, a quick sentiment check keeps them positive, and a database makes sure no quote repeats.
+        </p>
+        <p>
+          The pipeline helped me learn how to connect AI text generation with simple online automation tools. It ran smoothly for weeks until I paused it because of IFTTT costs, but I can restart anytime.
+        </p>
+        <p><strong>Tech used:</strong> ChatGPT, Hugging Face sentiment check, SQLite/DynamoDB, IFTTT</p>
+        <div class="tech-grid">
+          <img src="assets/twitter_logo.png" alt="Twitter">
+          <img src="assets/openai_icon.png" alt="OpenAI">
+          <img src="assets/huggingface_icon.png" alt="Hugging Face">
+          <img src="assets/ifttt_logo.png" alt="IFTTT">
+        </div>
+      </div>
 
-  <!-- Goals -->
-  <section id="goals">… your goals content …</section>
+    </div>
+  </section>
+
+  <section id="course-certs">
+    <h2>Course Certificates</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <img src="assets/cert_wadhwani.jpg" data-desc="Wadhwani Employability Skills" onclick="openCert(this)">
+        <div class="cert-caption">Wadhwani Employability Skills</div>
+        <p class="cert-brief">
+          • Learned clear & confident communication<br>
+          • Practiced teamwork and coordination<br>
+          • Understood job‑interview basics<br>
+          • Sharpened workplace attitude<br>
+          • Certified “Job Ready”
+        </p>
+      </div>
+
+      <div class="cert-item">
+        <img src="assets/cert_java.jpg" data-desc="Java & Python basics" onclick="openCert(this)">
+        <div class="cert-caption">Java & Python Basics</div>
+        <p class="cert-brief">
+          • Learned Python and Java fundamentals<br>
+          • Wrote programs in VS Code<br>
+          • Practiced logic and loops<br>
+          • Understood OOP basics<br>
+          • Gained beginner‑level coding confidence
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="extra-curricular">
+    <h2>Extra‑Curricular Activities</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <img src="assets/cert_ieee.jpg" data-desc="IEEE UI/UX Hackathon" onclick="openCert(this)">
+        <div class="cert-caption">IEEE UI/UX Hackathon</div>
+        <p class="cert-brief">
+          • Led a team in a 24‑hour UI/UX challenge<br>
+          • Designed a health‑tracking app<br>
+          • Built an interactive prototype<br>
+          • Focused on clean layout & flow<br>
+          • Won 1st place for best design
+        </p>
+      </div>
+
+      <div class="cert-item">
+        <img src="assets/cert_english.jpg" data-desc="English Eclat – Speech on Success" onclick="openCert(this)">
+        <div class="cert-caption">English Eclat Certificate</div>
+        <p class="cert-brief">
+          • Speech on “What Does Success Demand?”<br>
+          • Cited Mandela & Musk as examples<br>
+          • Ranked top 5 of 60+ participants<br>
+          • Improved stage confidence<br>
+          • Practiced persuasive speaking
+        </p>
+      </div>
+
+      <div class="cert-item">
+        <img src="assets/cert_cs.jpg" data-desc="Blockchain & Crypto poster" onclick="openCert(this)">
+        <div class="cert-caption">CS Poster: Blockchain & Crypto</div>
+        <p class="cert-brief">
+          • Explained decentralization & smart contracts<br>
+          • Designed an infographic poster<br>
+          • Discussed real‑world crypto uses<br>
+          • Presented to staff and peers<br>
+          • Noted for simple explanations
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <h2>Goals</h2>
+    <ul class="goals">
+      <li>⭐ Become an expert in GenAI & automation tools like GPT, LangChain, AutoGPT within 24 months.</li>
+      <li>🧪 Launch at least 2 autonomous AI micro‑tools that run without human touch.</li>
+      <li>💼 Join a cutting‑edge AI startup or build my own SaaS.</li>
+      <li>🤝 Contribute to impactful open‑source AI tools quarterly.</li>
+      <li>🌐 Inspire 1,000+ students to code, build, and believe — no fancy degree needed.</li>
+    </ul>
+  </section>
 
   <footer>© 2025 Komal Sriram | trench.org.in</footer>
   <button id="scrollToTop" title="Back to top">↑</button>
@@ -142,12 +249,12 @@
   <script>
     const canvas = document.getElementById('matrixCanvas');
     const ctx = canvas.getContext('2d');
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-    let chars = "アァイィウヴエカキクケコサシスセソタチツテトナニヌネノハヒフヘホ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-    let fontSize = 16;
-    let columns = canvas.width / fontSize;
-    let drops = Array(Math.floor(columns)).fill(1);
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    const chars = "アァイィウヴエカキクケコサシスセソタチツテトナニヌネノハヒフヘホ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
     function drawMatrix(){
       ctx.fillStyle = "rgba(0,0,0,0.05)";
       ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -155,16 +262,17 @@
       ctx.font = fontSize + "px monospace";
       for(let i=0;i<drops.length;i++){
         const text = chars[Math.floor(Math.random()*chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if(drops[i] * fontSize > canvas.height || Math.random()>0.975) drops[i] = 0;
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+        if(drops[i]*fontSize > canvas.height || Math.random()>0.975) drops[i] = 0;
         drops[i]++;
       }
     }
     setInterval(drawMatrix,33);
 
     const topBtn=document.getElementById('scrollToTop');
-    window.addEventListener('scroll',()=>topBtn.style.display=window.scrollY>300?'block':'none');
+    window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>300?'block':'none'});
     topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
     function openCert(el){
       document.getElementById('modalImg').src=el.src;
       document.getElementById('modalDesc').textContent=el.dataset.desc;
