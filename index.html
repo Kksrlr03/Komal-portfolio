@@ -3,105 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Komal Sriram | Futuristic Portfolio</title>
-  <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
-
-  <!-- Logo font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
-
+  <title>Welcome | Komal Sriram</title>
   <style>
-    * {margin:0; padding:0; box-sizing:border-box}
-    body, html {
-      height: 100%;
-      font-family: 'Courier New', monospace;
-      background: black;
-      color: #00ff00;
-      overflow: hidden;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:#000;color:#00ff00;font-family:"Courier New",monospace;
+      height:100vh;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;overflow:hidden
     }
-
-    #introMatrix {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-size: 1.6rem;
-      white-space: pre-wrap;
-      padding: 20px;
-    }
-
-    #mainContent {
-      display: none;
-      overflow-x: hidden;
-    }
-
-    /* Classic terminal blinking cursor */
-    .cursor {
-      display: inline-block;
-      width: 12px;
-      height: 20px;
-      background: #00ff00;
-      animation: blink 1s infinite;
-      margin-left: 5px;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1 }
-      50% { opacity: 0 }
+    video.bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;filter:brightness(.35)}
+    #terminal{
+      background:rgba(0,0,0,.9);border:2px solid #0f0;border-radius:8px;
+      box-shadow:0 0 18px #0f0;padding:1.5rem 2rem;
+      width:90%;max-width:600px;font-size:1rem;
+      white-space:pre-wrap;line-height:1.55;
     }
   </style>
 </head>
 <body>
 
-<!-- Matrix Intro (shown only once) -->
-<div id="introMatrix"><span id="matrixText">Wake up, Neo...</span><span class="cursor"></span></div>
+  <video autoplay muted loop playsinline preload="auto" class="bg">
+    <source src="assets/matrix_intro.mp4" type="video/mp4">
+  </video>
 
-<!-- Original Portfolio -->
-<div id="mainContent">
-  "Initializing trench.org.in...",
-  "Verifying GenAI integrity...",
-  "Access granted ✔",
-  "Welcome to Komal Sriram's portfolio.",
-  "Crafted with code, powered by purpose."
-</div>
+  <div id="terminal"></div>
 
-<script>
-  const matrixTextEl = document.getElementById("matrixText");
-  const introMatrix = document.getElementById("introMatrix");
-  const mainContent = document.getElementById("mainContent");
-  const cursor = document.querySelector('.cursor');
+  <script>
+    const lines = [
+      "Initializing trench.org.in...",
+      "Verifying GenAI integrity...",
+      "Access granted ✔",
+      "Welcome to Komal Sriram's portfolio.",
+      "Crafted with code, powered by purpose."
+    ];
+    let li = 0, ci = 0;
+    const term = document.getElementById("terminal");
 
-  const introShown = localStorage.getItem("introShown");
-
-  const typeMatrixText = (text, speed = 75, cb) => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        matrixTextEl.textContent += text.charAt(i);
-        i++;
+    function type(){
+      if(li < lines.length){
+        if(ci < lines[li].length){
+          term.textContent += lines[li][ci++];
+          setTimeout(type, 25);
+        } else {
+          term.textContent += "\n";
+          li++; ci = 0;
+          setTimeout(type, 300);
+        }
       } else {
-        clearInterval(interval);
-        if (cb) cb();
+        setTimeout(()=> location.href = "main.html", 700);
       }
-    }, speed);
-  };
+    }
 
-  if (!introShown) {
-    matrixTextEl.textContent = '';
-    localStorage.setItem("introShown", "true");
-
-    // Start typing effect
-    typeMatrixText("Wake up, Neo...", 85, () => {
-      setTimeout(() => {
-        introMatrix.style.display = "none";
-        mainContent.style.display = "block";
-        document.body.style.overflow = "auto";
-      }, 2200);
-    });
-  } else {
-    introMatrix.style.display = "none";
-    mainContent.style.display = "block";
-    document.body.style.overflow = "auto";
-  }
-</script>
+    // run typing animation EVERY visit
+    window.onload = () => {
+      term.textContent = "";
+      li = ci = 0;
+      type();
+    };
+  </script>
 </body>
 </html>
